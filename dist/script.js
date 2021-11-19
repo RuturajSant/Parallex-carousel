@@ -74,25 +74,25 @@ carouselSlide.addEventListener('transitionend',()=>{
 });
 
 //logic for automatic play
-// var int;
-// //when mouse is on the slides ,the automatic loop will stop,and play again when off the carousel
-// slidesContent.forEach((slide) => {
-//   slide.addEventListener('mouseover',(e) => {
-//     e.stopPropagation();//to stop event bubbling
-//     clearInterval(int);  
-// });
-//   slide.addEventListener('mouseout',(e) => {
-//     e.stopPropagation();
-//     auto(); 
-// });
-// });
+var int;
+//when mouse is on the slides ,the automatic loop will stop,and play again when off the carousel
+slidesContent.forEach((slide) => {
+  slide.addEventListener('mouseover',(e) => {
+    e.stopPropagation();//to stop event bubbling
+    clearInterval(int);  
+});
+  slide.addEventListener('mouseout',(e) => {
+    e.stopPropagation();
+    auto(); 
+});
+});
 
-// const repeater = () => {
-//   updateSlide(1);
-// };
+const repeater = () => {
+  updateSlide(1);
+};
 
-// const auto = () => {
-//   int = setInterval(repeater,5000);
-// };
+const auto = () => {
+  int = setInterval(repeater,5000);
+};
 
-// auto();
+auto();
