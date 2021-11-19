@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body{
+  position:relative;
+}
+
+.carousel{
+  font-size:16px;
+  position:relative;
+  overflow:hidden;
+  border-radius: 5px;
+  width:100%;
+  height:100%;
+  max-height:400px;
+  box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.8);
+-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.8);
+-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.8);
+}
+.slider{
+  display:flex;
+  width:100%;
+  position:relative;
+}
+.slide{
+  position:relative;
+  flex-basis:100%;
+  flex-shrink:0;
+  list-style:none;
+  width:100%;
+  background-color:green;
+  opacity:1;
+}
+
+.slide-content{
+  max-height:400px;
+  display:block;
+  position:relative;
+  overflow:hidden;
+}
+/* image styling */
+img{
+  width:100%;
+  display: block;
+  object-fit:cover;
+  -webkit-filter: blur(2px) brightness(80%);
+          filter: blur(2px) brightness(80%);
+  -webkit-transition : all 0.3s ease;
+  transition: all 0.3s ease;
+  
+}
+
+/*  text styling  */
+h1 , p , a{
+  position:absolute;
+  color:white;
+  font-family: Raleway, sans-serif;
+  font-weight:300;
+  letter-spacing:10px;
+  z-index:10;
+  left:50%; 
+  transform:translateX(-50% ); 
+}
+h1{
+  letter-spacing:1px;
+  font-weight:100;
+  font-size:2.5em;
+  top:32%; 
+  opacity: 0;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+p{
+  opacity: 0;
+  top:50%; 
+  transform: translate(-50% ,-50%) scale(0.65);
+  font-size:1.2em;
+  letter-spacing: 2px;
+  transition: all 0.3s ease 0.25s;
+}
+a{
+   border: 2px solid white ;
+   top:58%; 
+   font-size:1em;
+   text-decoration: none;
+   padding: 0.75em 0.5em;
+   opacity:0;
+   letter-spacing: 2px;
+   transition: all 0.3s ease 0.4s,
+               color 0.3s ease,
+               background 0.3s ease;
+}
+a:hover{
+  color: black;
+  background-color: white;
+} 
+
+/* navigation styling */
+.navigation{
+  z-index: 5;
+  position: absolute;
+  display:flex;
+  bottom: 30px;
+  left:50%;
+  transform: translateX(-50%);
+}
+.navigation .btn{
+  background: rgba(255,255,255,0.5);
+  width: 25px;
+  height: 4px;
+  margin: 10px;
+  cursor: pointer;
+}
+.navigation .btn:hover , .btn.active{
+  background: rgba(255,255,255,1);
+}
+
+/* active-slide styling */
+.slide.active h1{
+  opacity: 1;
+  top:34%;
+}
+.slide.active p{
+  opacity: 1;
+  transform: translate(-50% ,-50%) scale(1);
+}
+.slide.active a{
+  opacity:1;
+  top:57%;
+}
+
+.slide.active img{
+  -webkit-filter: blur(0px) brightness(80%);
+          filter: blur(0px) brightness(80%);
+}
+
+/* dark overlay */
+.slide-content::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:0;bottom:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.15);
+  z-index:1;
+}
+/* button styles */
+.left , .right{
+  max-width:25px;
+  z-index:15;
+  position:absolute;
+  top:50%;
+  fill:white;
+  transform:translateY(-50%);
+  opacity:0.5;
+  transition:all 0.2s ease;
+}
+.left{
+  left:6%;
+}
+.left:hover{
+  left:5%;
+  opacity:1;
+}
+.right{
+  right:6%;
+}
+.right:hover{
+  right:5%;
+  opacity:1;
+}
+
+@media screen and (max-width:480px){
+  .carousel{
+    font-size:10px;
+  }
+}
+/* @media screen and (max-width:567px) {
+
+  .carousel{
+    width:100vw;  
+  }
+  .slider{
+    height:200px;   
+    width:100%;
+  }
+  h1{
+    font-size: 1.2rem;
+    color: white;
+  }
+  p{
+    font-size: 6px;
+    letter-spacing: 2px;
+    
+  }
+  a{
+    font-size: 0.5rem;
+    padding : 4px 6px;
+    border:1px solid white
+  }
+  .left , .right{
+    max-width:10px;
+ }
+.navigation {
+ bottom :10px;
+  
+}
+.navigation .btn{
+  width:18px;
+  height:2px;
+  margin:8px;
+}
+
+}
+@media screen and (min-width:767px){
+  .carousel{
+    width:680px;
+  }
+  .slider{
+    height:400px;  
+    width:100%;
+  }
+  h1{
+    font-size: 2.3rem;
+  }
+  p{
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  a{
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  .left , .right{
+    max-width:30px;
+  }
+}
+
+@media screen and (min-width:1020px){
+  .carousel{
+    width:980px;  
+  }
+  .slider{
+    height:560px;   
+    width:100%;
+  }
+  h1{
+    font-size: 3.2rem;
+  }
+  p{
+      font-size: 15px;
+      letter-spacing: 7px;
+  }
+  a{
+    font-size: 1.15rem;
+    padding: 12px 8px;
+  }
+  .left , .right{
+    max-width:35px;
+  }
+}
+
+@media screen and (min-width:1200px){
+  .carousel{
+    width:1000px;  
+  }
+  .slider{
+    height:600px;   
+    width:100%;
+  }   
+} */
